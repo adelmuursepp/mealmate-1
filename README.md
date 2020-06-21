@@ -2,7 +2,7 @@
 ## Inspiration
 ddd
 ## What it does
-dd
+MealMate connects volunteers and community
 ## How we built it
 d
 ## Challenges we ran into
