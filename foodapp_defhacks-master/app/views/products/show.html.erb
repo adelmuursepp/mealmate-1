@@ -1,0 +1,11 @@
+<h1>Products#show</h1>
+<!-- <p>Amount: <%= humanized_money_with_symbol(@product.price) %></p>
+
+<%= form_tag orders_path# do %>
+  <%= hidden_field_tag #'product_id', @product.id %>
+  <%= submit_tag #'Purchase', class: 'btn-primary' %>
+<%# end %> -->
+
+<% content_for :meta_title, "#{@product.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @product.description %>
+<% content_for :meta_image, cl_image_path(@product.photo.path) %>

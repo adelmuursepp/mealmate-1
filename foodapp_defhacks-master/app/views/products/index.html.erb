@@ -1,0 +1,48 @@
+
+<div class="shop-container">
+  <div class="sidebar-container" data-controller='select'>
+    <% @categories.each do |category| %>
+    <a href="#<%= category %>"><div data-select-value="vegetables" data-action="click->select#update" data-target="select.button" class="p-big-black " id="side-bar-style " ><%= category.capitalize %></div></a>
+    <% end %>
+  </div>
+
+
+
+  <div class="categories-container">
+    <% @categories.each do |category| %>
+    <div class="category-container" id="<%= category %>">
+      <h2 class="h3-category"><%= category.capitalize %></h2>
+      <div class="cards-container">
+        <% @products.where(category: category).each_with_index do |product| %>
+        <div data-toggle="modal" data-target="#info-modal-<%= product.id %>" class="card-vertical" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0)),
+         url('<%= cl_image_path product.photo, height: 300, width: 400, crop: :fit, gravity: :center; %>')">
+          <div class="modal-info-btn">
+          </div>
+          <div class="product-info-container">
+            <div class="product-description">
+              <p ><%= product.name %></p>
+              <div class="product-info-price"><%= humanized_money_with_symbol(product.price) %>
+              </div>
+            </div>
+            <div class="product-info-btn">
+              <div class="btn-plusminus">
+                <%= link_to "-", remove_from_cart_path(@order, product), class: "btn-plusminus-minus link-big-white", remote: true %>
+                <% product_order = @order.product_orders.find_by(product_id: product.id) %>
+                <div class="btn-plusminus-amount link-big-white" id="product-quantity-<%= product.id %>"><%= product_order.quantity unless product_order.nil? %></div>
+                <%= link_to "+", add_to_cart_path(@order, product), class: "btn-plusminus-plus link-big-white", remote: true %>
+              </div>
+            </div>
+          </div>
+        </div>
+            <%= render 'shared/info-modal', product: product %>
+
+        <% end %>
+      </div>
+
+    </div>
+
+    <% end %>
+  </div>
+
+</div>
+

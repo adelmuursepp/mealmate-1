@@ -1,0 +1,121 @@
+<!-- Don't want to see CSS in views!!!!!!!!!!! -->
+<% content_for :navbar do %>
+<%= render 'shared/navbar', white: true %>
+<% end %>
+<!-- autoplay: :autoplay, -->
+<div class="video-container">
+  <div class="video-overlay"></div>
+  <%= video_tag "suburbanfarm.mp4", class: "banner-video", poster: "cover_hero.png", loop: :loop, autoplay: :autoplay, muted: :muted, playsinline: :playsinline %>
+</div>
+<div class="hero-container">
+  <div class="w-100 text-center">
+    <!-- <h1 class="display-3">Healthy dinners. No food waste.</h1> -->
+    <h1 class="display-3">Healthy meals. No food waste.</h1>
+    <div class="search-hero input-group">
+     <input class="form-control string required" placeholder= "Try searching Madrid" type="text" name="query" id="search_query" />
+  <%= link_to "DISCOVER", browse_path(@order.id), class: 'btn-hero link-white' %>
+
+     <div class="input-group-append">
+     </div>
+   </div>
+
+ </div>
+</div>
+
+
+<div class="home-page-content">
+  <div class="tagline-secondary-container" id="tagline-style">
+    <h2 class="discover-h2">Discover what suburban gardens have to offer</h2>
+  </div>
+  <div class="benefits-container" id="benefit-all">
+    <div class="benefit-info-container">
+      <img src="https://www.farmandco.com.au/assets/convenient_home_delivery-fe60b1a58c1f6a4e8e47f2030ba1b169a4d4e921651acd1fafce7f996149cfd2.svg" alt="" class="logo-step">
+      <div class="benefit-text-container">
+        <h5 class="p-big-black" id="p-align">Why Shop Here?</h5>
+        <p class="p-black" id="p-align">We deliver fresh groceries directly from local producers to your home.</p>
+      </div>
+    </div>
+    <div class="benefit-info-container">
+      <img src="https://www.farmandco.com.au/assets/convenient_home_delivery-fe60b1a58c1f6a4e8e47f2030ba1b169a4d4e921651acd1fafce7f996149cfd2.svg" alt="" class="logo-step">
+      <div class="benefit-text-container">
+        <h5 class="p-big-black" id="p-align">Convenient Delivery</h5>
+        <p class="p-black" id="p-align">We understand you’re busy. We make it easier by delivering direct to you. From the farmers gate, to your door.</p>
+      </div>
+    </div>
+    <div class="benefit-info-container">
+      <img src="https://www.farmandco.com.au/assets/support_local-9962c80a80858db61ff53d293016b0123e58494af28d5b7bd126a58699aa9847.svg" alt="" class="logo-step">
+      <div class="benefit-text-container">
+        <h5 class="p-big-black" id="p-align">Local producers</h5>
+        <p class="p-black" id="p-align">Trust who you're getting your food from and support your neighbors.</p>
+      </div>
+    </div>
+    <div class="benefit-info-container">
+      <img src="https://www.farmandco.com.au/assets/we_care-1f9b30626f116437011af2390e8f28371011f574afad63749fd3ec228e6659c0.svg" alt="" class="logo-step">
+      <div class="benefit-text-container" id="">
+        <h5 class="p-big-black" id="p-align">Eco-conscious</h5>
+        <p class="p-black" id="p-align">Cut your carbon footprint and create a self-sustainable community.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps-container" >
+    <div class="step-text-container">
+
+      <div class="step-info-container" id="step-info">
+        <h3 class="h3-category">Food not wasted</h3>
+        <p class="p-darkgray">
+        Subruban Farm helps cut your carbon foot print and create a self-sustainable community. We connect busy suburban growers to people in the city.Happy growers, happy organics shoppers, less food wasted  </p>
+        <div class="step-arrow-container">
+          <div id="arrow-link"><img src="https://onomeals.zeusjones.com/images/svgs/arrow-right-black.svg" alt=""></div>
+          <a href="products/new" class="btn-small-cta link-black"><font>POST PRODUCE</font></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="steps-image-container">
+      <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="" >
+    </div>
+  </div>
+
+
+  <div class="steps-container">
+    <div class="steps-image-container">
+      <img src="https://images.unsplash.com/photo-1418669112725-fb499fb61127?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="" >
+    </div>
+    <div class="step-text-container">
+
+      <div class="step-info-container" id="step-info">
+        <h3 class="h3-category">Delivered to your door</h3>
+        <p class="p-darkgray">Fresh local produce plus fast delivery to door? Woah! <br>
+        Look for the best organic produce for your recipes and enjoy the luxury of to-door deliery</p>
+        <div class="step-arrow-container">
+          <div id="arrow-link"><img src="https://onomeals.zeusjones.com/images/svgs/arrow-right-black.svg" alt=""></div>
+          <a href="#" id = "zig-zag-link" class="btn-small-cta link-black">DISCOVER</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<% if params[:signed_in] == 'false' %>
+<script>
+  window.addEventListener('load', (event) => {
+    const button = document.getElementById('sign-in-button');
+    button.click();
+  });
+</script>
+<% end %>
+
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div> -->

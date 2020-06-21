@@ -1,0 +1,193 @@
+.discover-h2 {
+  font-size: 40px;
+  font-family: 'Avenir-Medium';
+  font-weight: bold;
+}
+
+.h2-tagline {
+  font-size: 50px;
+  color: $black;
+  font-family: 'Avenir-Medium';
+}
+.h3-steps {
+  font-size: 37px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+.h3-category {
+  font-size: 28px;
+  color: $black;
+  font-family: 'Avenir-Light';
+}
+
+
+.p-big-black {
+  font-size: 25px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+  font-weight: regular;
+}
+.p-big-black-bold {
+  font-size: 25px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+.p-black {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+}
+.p-gray {
+  font-size: 21px;
+  color: $medium-gray;
+  font-family: 'Avenir-Light';
+}
+.p-darkgray {
+  font-size: 21px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+}
+.p-black-bold {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+.p-white {
+  font-size: 21px;
+  color: $white;
+  font-family: 'Avenir-Light';
+  font-style: italic;
+}
+
+
+.link-big-black {
+  font-size: 21px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+.link-black {
+  font-size: 21px;
+  color: $black !important;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+.link-black-bold {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+  text-decoration: none;
+}
+.link-big-white {
+  font-size: 21px;
+  color: $white;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+.link-white {
+  font-size: 21px;
+  color: $white;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+
+
+.label {
+  font-size: 16px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+}
+.placeholder {
+  font-size: 21px;
+  color: $light-gray;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+  width: 100vw;
+
+  padding: 10px 12px;
+  margin: 0px 0px 25px 0px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+input[type=text] {
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.ap-input {
+  width: 380px;
+}
+
+.aloglia-place{
+  width: 400px;
+  }
+
+.checkout-form{
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+#payment-form{
+  width: 400px;
+}
+.payment-page{
+  padding-left: $padding-standard-x;
+  padding-right: $padding-standard-x;
+}
+.form-row {
+  margin-top: 15px;
+}
+.btn-pay{
+    padding: 0px 28px;
+    display: -webkit-box;
+    display: flex;
+    color: white;
+    margin-left: -10px;
+    z-index: 50;
+    background-color: $primary !important;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 4px;
+    border: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "suburban-farming",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7",
+    "bootstrap": "^4.3.1",
+    "chart.js": "^2.8.0",
+    "chartkick": "^3.1.1",
+    "es": "^0.7.3",
+    "esm": "^3.2.25",
+    "jquery": "^3.4.1",
+    "mapbox-gl": "^1.1.1",
+    "places.js": "^1.16.4",
+    "popper.js": "^1.15.0",
+    "stimulus": "^1.1.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.7.2"
+  }
+}

@@ -1,0 +1,59 @@
+<% if  controller_name != "products"%>
+<div class="items-container">
+          <h3 class="h3-category">Your items</h3>
+          <div class="cart-items-container card" >
+            <% order.product_orders.where.not(quantity: 0).each do |product_order| %>
+
+            <div class="card-horizontal cart-product-checkout">
+              <div class="product-order-container">
+                <div class="product-image">
+                  <%= cl_image_tag(product_order.product.photo) %>
+                </div>
+                <div class="product-order-info-container">
+                  <div class="product-cart-details">
+                    <p class="p-black-bold"><%= product_order.product.name %></p>
+
+                  </div>
+                  <div class="btn-cart-container">
+                    <p class="p-black cart-product-price">Price: <%= humanized_money_with_symbol(product_order.product.price) %></p>
+                  </div>
+                  <div class="cart-buttons-container">
+                    <div class="cart-btn-plusminus">
+                      <%= link_to "-", remove_from_cart_path(@order, product_order.product), class: "btn-plusminus-minus", remote: true %>
+                    </div>
+                    <div class="cart-quantity-checkout">
+                      <div><%= product_order.quantity unless product_order.nil? %></div>
+                    </div>
+                    <div class="cart-btn-plusminus">
+                        <%= link_to "+", add_to_cart_path(@order, product_order.product), class: "btn-plusminus-plus link-big-white", remote: true %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% end %>
+          </div>
+        </div>
+
+
+
+        <div class="purchase-info-container">
+          <h3 class="h3-category">Summary</h3>
+          <div class="cart-info">
+            <div class="cart-info-container">
+              <p class="p-black">Grocery Items</p>
+              <p class="p-black"><span id="subtotal"><%= humanized_money_with_symbol(order.subtotal_price) %></span></p>
+            </div>
+            <div class="cart-info-container">
+              <p class="p-black">Delivery</p>
+              <p class="p-black"><%= humanized_money_with_symbol(order.delivery_price) %></p>
+            </div>
+            <div class="cart-info-container">
+              <p class="p-black-bold">Total</p>
+              <p class="p-black-bold"><%= humanized_money_with_symbol(order.total_price) %></p>
+            </div>
+          </div>
+          <%= link_to "CHECKOUT", new_order_payment_path(order.id), class: "btn-primary link-big-white" %>
+        </div>
+    <% end %>

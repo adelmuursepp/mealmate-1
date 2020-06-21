@@ -1,0 +1,59 @@
+// this is for card-products and for any type of card that we want to have vertical
+.card-vertical {
+  padding: 16px;
+  background-image: $linear-gradient;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 16vw;
+  border-radius: $border-radius;
+  height: 21vw;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    .product-info-btn{
+      opacity: 1;
+    }
+  }
+}
+
+.product-info-btn{
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+.product-info-container {
+  width: 100%;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-description {
+  width: 100%;
+  flex-grow: 1;
+  justify-content: center;
+  font-family:'Avenir-Heavy' !important;
+  font-size: 25px !important;
+  letter-spacing: 2px !important;
+  font-style: normal !important;
+  color: $white;
+
+}
+
+.product-info-btn {
+  display: none;
+  width: 100%;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.product-info-price {
+  font-family: 'Avenir-Medium';
+  font-size: 24px;
+}
+
+

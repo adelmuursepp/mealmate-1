@@ -1,0 +1,149 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+@import "products/index";
+@import "payments/new";
+@import "users/profile";
+@import "products/new";
+
+
+// Golden scale
+// 5 7 9 12 16 21 28 37 50 67 89 119 159pt
+
+// Application General
+
+html {
+  scroll-behavior: smooth;
+}
+
+.browser-container {
+  z-index: 6;
+  background: $white;
+}
+.footer-container {
+  // height: 40vh;
+  // width: 100%;
+  // background-color: $light-gray;
+}
+
+.h2-tagline {
+  font-size: 50px;
+  color: $black;
+  font-family: 'Avenir-Medium';
+}
+.h3-steps {
+  font-size: 35px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+.h3-category {
+  font-size: 35px;
+  color: $black;
+  font-family: 'Avenir-Light';
+}
+
+
+.p-big-black {
+  font-size: 25px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+  &.selected {
+    color: #F6613F;
+  }
+
+}
+.p-big-black-bold {
+  font-size: 25px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+
+}
+.p-black {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+}
+.p-black-bold {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+.p-white {
+  font-size: 21px;
+  color: $white;
+  font-family: 'Avenir-Light';
+  font-style: italic;
+}
+
+
+.link-big-black {
+  font-size: 25px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+.link-black {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+.link-black-bold {
+  font-size: 21px;
+  color: $black;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+  text-decoration: none;
+}
+.link-big-white {
+  font-size: 18px;
+  color: $white;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+.link-white {
+  font-size: 21px;
+  color: $white;
+  font-family: 'Avenir-Light';
+  text-decoration: none;
+}
+
+
+.label {
+  font-size: 16px;
+  color: $dark-gray;
+  font-family: 'Avenir-Light';
+}
+.placeholder {
+  font-size: 21px;
+  color: $light-gray;
+  font-family: 'Avenir-Light';
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+form {
+  margin-bottom: 30px;
+}
+
+.benefit-text-container .p-big-black {
+  font-family: 'Avenir-Heavy';
+}

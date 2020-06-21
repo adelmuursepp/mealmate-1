@@ -1,0 +1,42 @@
+//  all of our buttons will go in here
+
+// For padding only those values
+
+$button-y-padding: 16px;
+$button-x-padding: 32px;
+
+// For border radius look into config/colors
+
+
+
+
+// Try to do two-three button classes
+
+
+// plus-minus button
+// responsiveness: to change the size
+// change div size created around it
+
+.btn-plusminus {
+  display: flex;
+  justify-content: space-between;
+  background: $primary;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: $border-radius-sm;
+  color: $white;
+}
+
+
+.modal-info-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+ }
+.btn-primary {
+  height: 50px;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

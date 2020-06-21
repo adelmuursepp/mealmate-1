@@ -1,0 +1,43 @@
+// Specific CSS for your home-page
+
+#p-align {
+  text-align: center;
+}
+.home-page-content {
+  z-index: 500;
+  margin-top: 100vh;
+  background-color: $white;
+}
+
+//tagline
+
+
+.tagline-secondary-container {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  padding: $padding-big-y $padding-standard-x;
+}
+
+#tagline-style {
+ padding: 50px;
+}
+
+#step-info {
+  margin-top: 21px;
+}
+.footer {
+  width: 100vw;
+  height: 40vh;
+}
+
+//form actions
+
+.form-actions{
+  .btn{
+    background-color: $primary;
+  }
+}
+
+
+

@@ -1,0 +1,223 @@
+
+<div class="dashboard-container">
+  <div class="dashboard-navbar-wrapper">
+    <div class="dashboard-navbar">
+      <p class="p-big-black-bold">Dashboard</p>
+      <div class="profile-info">
+        <p ><%= @user.name.upcase %></p>
+        <%= cl_image_tag("user_photo", class: "avatar") %>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="orders-wrap">
+    <div class="orders-container">
+      <h3 class="p-big-black">YOUR POSTINGS</h3>
+      <div class="orders-table">
+        <div class="orders-title-container">
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Name</p>
+            </div>
+          </div>
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Price</p>
+            </div>
+          </div>
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Category</p>
+            </div>
+          </div>
+        </div>
+        <% @user.products.each do |product| %>
+
+        <div class="order-card">
+          <div class="order-name">
+            <%= cl_image_tag(product.photo, width: 40, height: 40, class: "order-image-profile") %>
+            <p class="p-darkgray" style="font-size: 18px; font-weight: bold;"><%= product.name %></p>
+          </div>
+          <div class="order-customer">
+            <p class="p-darkgray"><%=  humanized_money_with_symbol(product.price) %></p>
+          </div>
+          <div class="order-status">
+            <p class="p-darkgray"><%= product.category.capitalize %></p>
+          </div>
+        </div>
+        <div class="line-dashboard"></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="orders-wrap">
+    <div class="orders-container">
+      <h3 class="p-big-black">ORDERED FROM YOU</h3>
+      <div class="orders-table">
+        <div class="orders-title-container">
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Name</p>
+            </div>
+          </div>
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Customer</p>
+            </div>
+          </div>
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Status</p>
+            </div>
+          </div>
+        </div>
+
+        <% @user.products.each do |product| %>
+        <% product.product_orders.where.not(quantity: 0).each do |product_order| %>
+        <div class="order-card">
+          <div class="order-name">
+            <%= cl_image_tag(product_order.product.photo, width: 40, height: 40, class: "order-image-profile") %>
+            <p class="p-darkgray" style="font-size: 18px; font-weight: bold;"><%= product_order.product.name %></p>
+          </div>
+          <div class="order-customer">
+            <p class="p-darkgray"><%=  product_order.order.user.present? ? product_order.order.user.name : "Unknown" %></p>
+          </div>
+          <div class="order-status <%= "paid-container" if product_order.order.status == "paid" %> <%= "pending-container" if product_order.order.status == "pending" %>
+            <%= "delivered-container" if product_order.order.status == "delivered" %>">
+            <p class="p-darkgray"><%= product_order.order.status.capitalize %></p>
+          </div>
+        </div>
+        <div class="line-dashboard"></div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="orders-wrap">
+    <div class="orders-container">
+      <h3 class="p-big-black">YOU ORDERED</h3>
+      <div class="orders-table">
+        <div class="orders-title-container">
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Name</p>
+            </div>
+          </div>
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Supplier</p>
+            </div>
+          </div>
+          <div class="order-title">
+            <div class="order-title-text">
+              <p class="p-gray">Status</p>
+            </div>
+          </div>
+        </div>
+        <% @user.orders.where(status: ["pending", "paid", "delivered"]).each do |order| %>
+        <% order.product_orders.each do |product_order| %>
+        <div class="order-card">
+          <div class="order-name">
+            <%= cl_image_tag(product_order.product.photo, width: 40, height: 40, class: "order-image-profile") %>
+            <p class="p-darkgray" style="font-size: 18px; font-weight: bold;"><%= product_order.product.name %></p>
+          </div>
+          <div class="order-customer">
+            <p class="p-darkgray"><%=  product_order.product.user.name.present? ? product_order.product.user.name : "Unknown" %></p>
+          </div>
+          <div class="order-status">
+            <p class="p-darkgray"><%= product_order.order.status.capitalize %></p>
+          </div>
+        </div>
+        <div class="line-dashboard"></div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+<div class="orders-wrap">
+  <div class="orders-container">
+    <h3 class="p-big-black">DROP OFF HUBS</h3>
+    <%= simple_form_for current_user do |f| %>
+      <div class="produce-categories" data-controller="select">
+        <% @hubs.each do |hub| %>
+          <div id="hub-button-<%= hub.id %>" data-select-value="<%= hub.id %>" data-action="click->select#update" data-target="select.button" class="stats-container"><%= hub.name %></div>
+        <% end %>
+        <%= f.input :hub_id, as: :hidden, input_html: { 'data-target' => 'select.input' } %>
+      </div>
+      <%= f.button :submit, class: "btn btn-secondary", id: "submit-button-form" %>
+      <% end %>
+      <div
+        id="hub-map"
+        style="width: 100%;
+        height: 200px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+  </div>
+</div>
+
+
+
+  <div class="thisweek-container">
+    <div class="stats-container">
+      <p class="p-gray">Saved to favorites</p>
+      <p class="p-big-black">14</p>
+    </div>
+    <div class="stats-container">
+      <p class="p-gray">To deliver</p>
+      <p class="p-big-black">9</p>
+    </div>
+    <div class="stats-container">
+      <p class="p-gray">Delivered</p>
+      <p class="p-big-black">13</p>
+    </div>
+  </div>
+
+  <div class="alltime-container">
+    <h3 class="p-big-black">STATS</h3>
+    <div class="graph-stats-grouper">
+      <div class="graph-wrap">
+        <div class="graph-container">
+          <div class="graph-content graph-grow"><%= line_chart({1.day.ago => 50, 2.day.ago => 20, 3.day.ago => 22, 4.day.ago => 18, 5.day.ago => 12, 6.day.ago => 25, 7.day.ago => 28, 8.day.ago => 20}, title: "Earnings", colors: ['#60A5B7', '#777777', '#FFFFFF', '#89BBFE', '#F6613F', '#000000'] )%></div>
+        </div>
+      </div>
+      <div class="stats-wrap">
+        <div class="graph-stats">
+          <p >Earned</p>
+          <p class="graph-number"><%= currency_symbol %> 220</p>
+        </div>
+        <div class="graph-stats">
+          <p >Customers</p>
+          <p class="graph-number">45</p>
+        </div>
+      </div>
+    </div>
+
+    <%#= pie_chart({"Football" => 10, "Basketball" => 5}) %>
+<%#= pie_chart [["Football", 10], ["Basketball", 5]] %>
+    <div class="graph-stats-grouper">
+      <div class="graph-wrap">
+        <div class="graph-container graph-pie">
+          <div class="graph-content"><%= pie_chart @user.products.group(:category).count, colors: [ '#60A5B7', '#777777', '#FFFFFF', '#89BBFE', '#FFDB99', '#777777', '#b7e488', '#F6613F'], title: "Products by categories", legend: 'bottom' %></div>
+          <div class="graph-content graph-grow"><%= bar_chart( {'Strawberry': 12, 'Banana': 9, 'Eggs': 5}, label: "product", colors: [  '#60A5B7', '#777777', '#FFFFFF', '#F6613F'], title: 'Reorders by products') %></div>
+        </div>
+      </div>
+      <div class="stats-wrap">
+        <div class="graph-stats">
+          <p >Most popular product</p>
+          <p class="graph-number">Strawberry</p>
+        </div>
+        <div class="graph-stats">
+          <p >Average delivery time</p>
+          <p class="graph-number">1 day</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
